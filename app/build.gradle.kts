@@ -24,7 +24,7 @@ fun setupAndroidReporting() {
 
             group = "Reporting"
             description =
-                "Generate Jacoco coverage reports on the ${sourceName.capitalize()} build."
+                "Generate Jacoco coverage reports on the ${buildTypeName.capitalize()} build."
 
             reports {
                 xml.required.set(true)
@@ -75,10 +75,10 @@ fun setupAndroidReporting() {
                 "**/*Extensions*.*",
             )
 
-            val javaTree = fileTree("${project.buildDir}/intermediates/javac/$sourceName/classes") {
+            val javaTree = fileTree("${project.buildDir}/intermediates/javac/$buildTypeName/classes") {
                 exclude(fileFilter)
             }
-            val kotlinTree = fileTree("${project.buildDir}/tmp/kotlin-classes/$sourceName") {
+            val kotlinTree = fileTree("${project.buildDir}/tmp/kotlin-classes/$buildTypeName") {
                 exclude(fileFilter)
             }
             classDirectories.setFrom(files(javaTree, kotlinTree))
@@ -113,6 +113,11 @@ android {
     }
 
     buildTypes {
+
+        debug {
+            enableUnitTestCoverage = true
+            isMinifyEnabled = false
+        }
         release {
             isMinifyEnabled = false
             proguardFiles(

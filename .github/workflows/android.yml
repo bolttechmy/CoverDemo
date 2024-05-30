@@ -25,13 +25,12 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
         # Execute unit tests
-    - run: ./gradlew testDebugUnitTest
+    - run: ./gradlew testDebugUnitTestCoverage
     - name: generate report
       uses: actions/upload-artifact@v2
       with:
         name: report
-        path: app/build/reports/coverage/debug
-
+        path: build/reports/tests/testDebugUnitTest/index.html
 
     - name: Download Test Reports Folder
       uses: actions/download-artifact@v2
