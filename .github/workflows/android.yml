@@ -30,7 +30,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: report
-        path: build/reports/tests/testDebugUnitTest/index.html
+        path: build/reports/tests/testDebugUnitTest
 
     - name: Download Test Reports Folder
       uses: actions/download-artifact@v2
