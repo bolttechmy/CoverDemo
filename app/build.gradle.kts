@@ -3,6 +3,10 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
 }
 
+
+
+
+
 android {
     namespace = "io.bolttech.coverdemo"
     compileSdk = 34
