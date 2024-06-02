@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    jacoco
 }
 
 
@@ -24,6 +25,12 @@ android {
         }
     }
 
+    testOptions {
+        unitTests.all{
+
+        }
+        unitTests.isReturnDefaultValues = true
+    }
     buildTypes {
 
         debug {
