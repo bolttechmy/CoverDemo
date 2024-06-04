@@ -26,7 +26,7 @@ android {
     }
 
     testOptions {
-        unitTests.all{
+        unitTests.all {
 
         }
         unitTests.isReturnDefaultValues = true
@@ -82,5 +82,7 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation (libs.androidx.core.testing)
 }
-apply(  "$rootDir/jacoco.gradle.kts")
+apply("$rootDir/jacoco.gradle.kts")
