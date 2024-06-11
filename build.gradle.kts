@@ -3,6 +3,7 @@
 plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.jetbrains.kotlin.android) apply false
+    id("org.jetbrains.kotlinx.kover") version "0.7.6" apply false
 }
 buildscript {
     repositories {

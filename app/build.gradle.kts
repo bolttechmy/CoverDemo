@@ -1,12 +1,19 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    jacoco
+    id("org.jetbrains.kotlinx.kover")
 }
 
 
 
+koverReport {
 
+    filters {
+        excludes {
+            annotatedBy("androidx.compose.ui.tooling.preview.Preview")
+        }
+    }
+}
 
 android {
     namespace = "io.bolttech.coverdemo"
@@ -25,12 +32,6 @@ android {
         }
     }
 
-    testOptions {
-        unitTests.all {
-
-        }
-        unitTests.isReturnDefaultValues = true
-    }
     buildTypes {
 
         debug {
@@ -85,4 +86,3 @@ dependencies {
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation (libs.androidx.core.testing)
 }
-apply("$rootDir/jacoco.gradle.kts")
