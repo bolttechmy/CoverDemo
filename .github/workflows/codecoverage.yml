@@ -25,15 +25,14 @@ jobs:
           fetch-depth: 0
 
       - name: Execute unit tests
-        run: ./gradlew createDebugCoverageReport
-
-       # run: ./gradlew testDebugUnitTest
+        run: ./gradlew :app:koverXmlReportDebug
+      # run: ./gradlew testDebugUnitTest
 
       - name: generate report
         uses: actions/upload-artifact@v2
         with:
           name: report
-          path: app/build/reports/coverage/test/debug
+          path: app/build/reports/kover
             # path: app/build/test-results
 
 
@@ -41,13 +40,15 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: report
-          path: app/build/reports/coverage/test/debug
+          path: app/build/reports/kover
+          #app/build/reports/coverage/test/debug
       - name: Upload reports to Codecov
         uses: codecov/codecov-action@v4
         env:
             CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         with:
             fail_ci_if_error: true
-            file: app/build/reports/coverage/test/debug/report.xml
+            file: app/build/reports/kover/reportDebug.xml
+          #app/build/reports/coverage/test/debug/report.xml
    #   - name: Upload Test Report
     #    run:  bash <(curl -s https://codecov.io/bash) -f "app/build/reports/coverage/test/debug/report.xml"
